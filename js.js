@@ -260,14 +260,15 @@ function game() {
 	}
 
 	function flash() {
-		var badresponse = document.body;
+		var background = document.getElementById('runninggame');
 		var internaltime = 0;
-		badresponse.style.backgroundColor = "#430000";
+		var originalbgcolor = background.style.backgroundColor;
+		background.style.backgroundColor = "#430000";
 		function internalcount(){
 			internaltime++;
 			if (internaltime > 1) {
 				clearInterval(begininternalcount);
-				badresponse.style.backgroundColor = "#101010";
+				background.style.backgroundColor = originalbgcolor;
 			}
 		}
 		var begininternalcount = setInterval(internalcount,100);
@@ -278,20 +279,21 @@ function game() {
 	function pause() {
 		if(paused%2==0) {
 			generate();
-			running = setInterval(timer,1000); /* Because shit stupid. */
+			running = setInterval(timer,1000); /* Because stupid. */
 			document.getElementById('response').style.display = "inline-block";
-			document.getElementById('explain').style.display = "block";
+			document.getElementById('statustext').innterHTML="PAUSE";
 			document.getElementById('response').focus();
 		}
 		else {
 			document.getElementById('seconds').innerHTML = " ";
 			seconds = 0;
 			document.getElementById('problem').innerHTML="PAUSED";
+			document.getElementById('statustext').innterHTML="PLAY";
 			document.getElementById('response').style.display = "none";
-			document.getElementById('explain').style.display = "none";
 			clearInterval(running);
 		}
 		paused++;
+		console.log(paused)
 	}
 
 	setup();
