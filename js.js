@@ -1,5 +1,19 @@
-function game() {
-	settings = {
+var game = function() {
+
+	/* These two quick functions have been put in just to pretty things up (and make the coding easier, too).
+	Should I be doing this? I don't know. */
+	function cleanid(id) {
+		return(document.getElementById(id));
+	};
+	function cleanclass(name,index) {
+		return(document.getElementsByClassName(name)[index]);
+	};
+
+	settings = { 
+		/* Contained here are settings that are intended to be edited for optimized gameplay
+		(namely number ranges and operator types) as well as functions that aid the use of the settings
+		and that aid the user in changing settings. */ 
+
 		ranges: {
 			addition: 100,
 			subtraction: 100,
@@ -24,113 +38,67 @@ function game() {
 				}
 			)
 		},
-		display: function(type) {
+
+			/* While the above objects and functions are involved in the actual construction of the math problem within JS,
+			the code here has little to do with the actual settings and only provides for a hideable settings panel. This
+			may or may not belong here. */
+		show: function() {
 			var displaybox = cleanid("displaybox");
 			var hidebutton = cleanid("hide");
 			var showbutton = cleanid("show");
 
-			if (type === "open") {
-				displaybox.className = "extendeddisplay";
-				hidebutton.className = "display";
-				showbutton.className = "hide";
-				pause();
-				settings.initalize();
-			}
-			else if (type === "close") {
-				displaybox.className = "minimizeddisplay";
-				hidebutton.className = "hide";
-				showbutton.className = "display";
-				pause();
-				settings.change();
-			}
+			pause();
+
+			displaybox.className = "extendeddisplay";
+			hidebutton.className = "display";
+			showbutton.className = "hide";
+			settings.initialize();
+
+		},
+		hide: function() {
+			var displaybox = cleanid("displaybox");
+			var hidebutton = cleanid("hide");
+			var showbutton = cleanid("show");
+
+			displaybox.className = "minimizeddisplay";
+			hidebutton.className = "hide";
+			showbutton.className = "display";
+			settings.change();
+
+			pause();
 		},
 		initialize: function() {
+			/* This baby takes the settings in the above objects and changes the status of on-page settings elements to reflect the in-game settings.
+			Currently incomplete. In fact, there are whole settings I intend that have yet to whatsoever provided for in the code.*/
 			cleanclass('addition button',0).checked = settings.operatorsettings["+"];
+			cleanclass('subtraction button',0).checked = settings.operatorsettings["-"];
+			cleanclass('multiplication button',0).checked = settings.operatorsettings["x"];
+			cleanclass('division button',0).checked = settings.operatorsettings["/"];
 		},
 		change: function() {
-
+			/* This does the exact inverse of above; in-game settings are changed to reflect the user-chosen settings */
+			settings.operatorsettings["+"] = cleanclass('addition button',0).checked;
+			settings.operatorsettings["-"] = cleanclass('subtraction button',0).checked;
+			settings.operatorsettings["x"] = cleanclass('multiplication button',0).checked;
+			settings.operatorsettings["/"] = cleanclass('division button',0).checked;
 		}
-
 	};
 
-	function cleanid(id) {
-		return(document.getElementById(id));
-	};
-
-	function cleanclass(name,index) {
-		return(document.getElementsByClassName(name)[index]);
-	};
-
-
-	var questionslimit = 0;
-	var timelimit = 0;
-
-	var running;
 	function setup() {
-		document.getElementsByClassName('subtraction button')[0].checked = settings.operatorsettings["-"];
-		document.getElementsByClassName('multiplication button')[0].checked = settings.operatorsettings["x"];		
-		document.getElementsByClassName('division button')[0].checked = settings.operatorsettings["/"];
 		generate();
-		running = setInterval(timer,1000);
 		settings.initialize();
-	}
-
-	function changesettings() {
-		var displaybox = cleanid("displaybox");
-		var hidebutton = document.getElementById("hide");
-		var showbutton = document.getElementById("show");
-
-		displaybox.className = "extendeddisplay";
-
-		hidebutton.className = "display";
-		showbutton.className = "hide";
-
 		pause();
 	}
-
-	function closesettings() {
- 		var displaybox = document.getElementById("displaybox");
- 		var hidebutton = document.getElementById("hide");
- 		var showbutton = document.getElementById("show");
-
- 		alert("Frackers");
-
- 		displaybox.className = "minimizeddisplay";
-
- 		hidebutton.className = "hide";
- 		showbutton.className = "display";
-
- 		settings.operatorsettings["+"] = document.getElementsByClassName('addition button')[0].checked;
-		settings.operatorsettings["-"] = document.getElementsByClassName('subtraction button')[0].checked;
-		settings.operatorsettings["x"] = document.getElementsByClassName('multiplication button')[0].checked;	
-		settings.operatorsettings["/"] = document.getElementsByClassName('division button')[0].checked;
-
-		if (document.getElementById("timer").value !== "") {
-			var maybelimit = document.getElementById("timer").value;
-			if(!isNaN(maybelimit)) {
-				timelimit = maybelimit;
-			}
-			else {
-				alert("You entered an invalid number for your time limit.");
-			}
-		}
-
-		if (document.getElementById("questions").value !== ""){
-			var maybelimit = document.getElementById("questions").value;
-			if(!isNaN(maybelimit)){
-				questionslimit = maybelimit;
-			}
-			else{
-				alert("You entered an invalid number for your question limit.");
-			}
-		}
-
- 		pause();
- 	}
 
 	var problem = "";
 	var answer = 0;
 	function generate() {
+		/* This is the core function of the game. It:
+		1) generates a random math problem based on the settings above
+		2) declares an answer and
+		3) physically outputs the problem
+		Changes may come here if I come up with better logic for such calculations. */
+
 		function randomoutof(i) {
 			return Math.floor(Math.random()*i)+1;
 		}
@@ -195,12 +163,11 @@ function game() {
 
 		answer = eval(problem);
 
-		document.getElementById("problem").innerHTML = problem;
-		/*document.getElementById("seconds").innerHTML = seconds;*/
+		cleanid("problem").innerHTML = problem;
 	};
 
 	function clear() {
-		document.getElementById("response").value="";
+		cleanid("response").value="";
 	}
 
 	function eventdirect(event){
@@ -230,20 +197,36 @@ function game() {
 		}
 	}
 
+
+
 	var totalseconds = 0;
 	var seconds = 0;
-	function timer() {
-		totalseconds ++;
-		seconds ++;
+	function timer(turn) {
+		/*This function turns itself on on first call, and then can be turned on or off.
+		It counts playtime and questiontime and outputs that information both to the page and to external variables used elsewhere.*/
+
+		/* A sort of convoluted way of using setInterval, as it's calling the same function
+		it was defined within. However, this seems to work better and is more concise than other
+		strategies I've come up with. */
+		if ((typeof running === 'undefined')||(turn === "on")) {
+		running = setInterval(timer,1000);
+		}
+		if (turn === "off") {
+		clearInterval(running);
+		seconds = 0;
+		}
+
 		var readabletime = totalseconds + "s";
 		if (totalseconds > 60) {
 			var minutes = Math.floor(totalseconds/60);
 			readabletime = minutes + "m " + totalseconds%60 + "s";
 		}
-		document.getElementById("totaltime").innerHTML = readabletime;
-		document.getElementById("seconds").innerHTML = seconds;
-		document.getElementById("score").innerHTML = score;
+		cleanid("totaltime").innerHTML = readabletime;
+		cleanid("seconds").innerHTML = seconds;
+		cleanid("score").innerHTML = score;
 
+		totalseconds ++;
+		seconds ++;
 	}
 
 	var	score = 0;
@@ -260,7 +243,7 @@ function game() {
 	}
 
 	function flash() {
-		var background = document.getElementById('runninggame');
+		var background = cleanid('runninggame');
 		var internaltime = 0;
 		var originalbgcolor = background.style.backgroundColor;
 		background.style.backgroundColor = "#430000";
@@ -278,29 +261,28 @@ function game() {
 	var paused = 1;
 	function pause() {
 		if(paused%2==0) {
+			timer("on");
 			generate();
-			running = setInterval(timer,1000); /* Because stupid. */
-			document.getElementById('response').style.display = "inline-block";
-			document.getElementById('statustext').innterHTML="PAUSE";
-			document.getElementById('response').focus();
+			cleanid('response').style.display = "inline-block";
+			cleanid('statustext').innerHTML="&#8595;PAUSE";
+			cleanid('response').focus();
+
 		}
 		else {
-			document.getElementById('seconds').innerHTML = " ";
-			seconds = 0;
-			document.getElementById('problem').innerHTML="PAUSED";
-			document.getElementById('statustext').innterHTML="PLAY";
-			document.getElementById('response').style.display = "none";
-			clearInterval(running);
+			timer("off");
+			cleanid('seconds').innerHTML = "---";
+			cleanid('problem').innerHTML="PAUSED";
+			cleanid('statustext').innerHTML="&#8595;PLAY";
+			cleanid('response').style.display = "none";
 		}
 		paused++;
-		console.log(paused)
 	}
 
 	setup();
+	cleanid("show").onclick = settings.show;
+	cleanid("hide").onclick = settings.hide;
+	cleanid("status").onclick = pause;
 	document.body.onkeydown = eventdirect;
-	document.getElementById("show").onmousedown = changesettings;
-	document.getElementById("hide").onmousedown = closesettings;
 
 }
-
-game();
+window.onload = game;
