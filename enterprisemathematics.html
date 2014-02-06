@@ -13,83 +13,29 @@
 
 
 		<div id="header">
-
 			<div id="welcometext">
 				MATHEMATICS I
 			</div>
-
-			<div id="displaybox" class="hiddendisplay">
-
-				<div id="hide">exit settings</div>
-				<div id="show"> settings</div>
-				<div id="operatorbox">
-
-					<div id="operatortext">Checked boxes correspond to the problem types to be generated.</div>
-					<ul class="operatorlist">
-
-						<li class="addition selector">
-
-							<input type="checkbox" id="fuckyou" class="addition button"></input>
-							<div class="addition text">+</div>
-
-						</li>
-						<li class="subtraction selector">
-
-							<input type="checkbox" class="subtraction button"></input>
-							<div class="subtraction text">-</div>
-
-						</li>
-						<li class="multiplication selector">
-
-							<input type="checkbox" class="multiplication button"></input>
-							<div class="multiplication text">x</div>
-
-						</li>
-						<li class="division selector">
-
-							<input type="checkbox" class="division button"></input>
-							<div class="division text">/</div>
-
-						</li>
-
-					</ul>
-
-				</div>
-				<div id="gametype">
-					You can choose to play this game timed or with a set number of problems. <br/>
-
-					<div id="typesettings">
-						<div id="timerbox">
-							<input id="timer" class="gametype"></input>
-							<div class="inputexplanation">Seconds of playtime</div>
-						</div>
-						<div id="questionbox">
-							<input id="questions" class="gametype"></input>
-							<div class="inputexplanation">Questions answered</div>
-						</div>
-					</div>
-
-					The default settings allow you to play without limits.
-				</div>
-
-			</div>
-
 		</div>
 
-		<div id="scoreboard">
-
+		<div id="sidebar">
 			<div id="total">
 				<div id="totaltext">TIME PLAYED</div>
 				<div id="totaltime">0s</div>
 			</div>
 
 			<div id="status">
-				<div id="statustext">&#8595;PAUSE</div>
+				<div id="statustext">&#8595;PLAY</div>
 			</div>
 
+			<div id="restart">
+				<div id="restarttext">RESTART</div>
+			</div>
+
+			<div id="foot"></div>
 		</div>
 
-		<div id="unique">
+		<div id="game">
 			<div id="dialogue">
 				<div id="seconds">0</div>
 				<div id="score">0</div>
@@ -103,8 +49,64 @@
 		<div id="runninggame">
 		</div>
 
-		<div id="footer">
+		<div id="displaybox" class="hiddendisplay">
+
+			<div id="hide">exit settings</div>
+			<div id="show"> settings</div>
+			<div id="operatorbox">
+
+				<div id="operatortext">Checked boxes correspond to the problem types to be generated.</div>
+				<ul class="operatorlist">
+
+					<li class="addition selector">
+
+						<input type="checkbox" id="fuckyou" class="addition button"></input>
+						<div class="addition text">+</div>
+
+					</li>
+					<li class="subtraction selector">
+
+						<input type="checkbox" class="subtraction button"></input>
+						<div class="subtraction text">-</div>
+
+					</li>
+					<li class="multiplication selector">
+
+						<input type="checkbox" class="multiplication button"></input>
+						<div class="multiplication text">x</div>
+
+					</li>
+					<li class="division selector">
+
+						<input type="checkbox" class="division button"></input>
+						<div class="division text">/</div>
+
+					</li>
+
+				</ul>
+
+			</div>
+			<!--<div id="gametype">
+				You can choose to play this game timed or with a set number of problems. <br/>
+
+				<div id="typesettings">
+					<div id="timerbox">
+						<input id="timer" class="gametype"></input>
+						<div class="inputexplanation">Seconds of playtime</div>
+					</div>
+					<div id="questionbox">
+						<input id="questions" class="gametype"></input>
+						<div class="inputexplanation">Questions answered</div>
+					</div>
+				</div>
+
+				The default settings allow you to play without limits.
+			</div> !-->
+
 		</div>
+
+		<!--<div id="footer">
+		</div>-->
 
 		<script tyle="text/javascript" src="js.js"></script>
 

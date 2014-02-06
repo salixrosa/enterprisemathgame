@@ -41,7 +41,8 @@ var game = function() {
 
 			/* While the above objects and functions are involved in the actual construction of the math problem within JS,
 			the code here has little to do with the actual settings and only provides for a hideable settings panel. This
-			may or may not belong here. */
+			may or may not belong here.
+			Note: with latest design, the show and hide functions are only useful in small viewports? */
 		show: function() {
 			var displaybox = cleanid("displaybox");
 			var hidebutton = cleanid("hide");
@@ -115,9 +116,9 @@ var game = function() {
 				The second random number is generated between zero and the calculated difference.
 				This means the addition problem will never be greater than the input value. */
 				var zo = settings.ranges.addition;
-				var x = randomoutof(zo)-2;
+				var x = randomoutof(zo);
 				var zi = zo - x;
-				var y = randomoutof(zi)+2;
+				var y = randomoutof(zi);
 				break;
 		
 			case "-":
@@ -278,10 +279,19 @@ var game = function() {
 		paused++;
 	}
 
+	function restart() {
+		totalseconds = 0;
+		seconds = 0;
+		score = 0;
+		paused = 1;
+		pause();
+	}
+
 	setup();
 	cleanid("show").onclick = settings.show;
 	cleanid("hide").onclick = settings.hide;
 	cleanid("status").onclick = pause;
+	cleanid("restart").onclick = restart;
 	document.body.onkeydown = eventdirect;
 
 }

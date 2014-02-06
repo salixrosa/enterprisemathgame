@@ -1,254 +1,252 @@
-body {
+
+/* Style (colors, fonts, font sizes, styles) */
+
+body { 
 	background-color: #0F0F0F;
+	border-color: #0F0F0F;
+
+	color: black;
+	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
+	letter-spacing: .2rem;
+}
+		/*Header*/
+	#header {
+		background-color: #E2A538;
+	}
+		#welcometext {
+			background-color: black;
+			color: #E2A538;
+			font-size: 3.7rem;
+		}
+		/*Sidebar*/
+	#sidebar {
+		font-size: 1.2rem;
+		letter-spacing: 0;
+	}
+		#total {
+			background-color: #D7A750;
+			border-style: solid;	
+			border-color: #0F0F0F;		
+		}
+			#totaltime {
+				font-size: 1rem;
+			}
+
+		#status {
+			background-color: #D7AC9C;
+			border-style: solid;
+			border-color: #0F0F0F;
+		}
+			#statustext:first-letter {
+				font-size: 12rem;
+				opacity: 0;
+			}
+				#status:hover #statustext:first-letter {
+					opacity: .1;
+				}
+
+		#foot {
+			background-color: #AD6039;
+		}
+
+	#game {
+		background-color: #CE7935;
+	}
+			/*HUD*/
+			#seconds, #timertext {
+			border-style: solid;
+			background-color: #B05D5D;
+			border-color: #0F0F0F;
+			}
+			#score, #scoretext {
+			background-color: #9FC67E;
+			border: solid;
+			border-color: #0F0F0F;
+			}
+			#timertext, #scoretext {
+			letter-spacing: .1rem;
+			font-size: .9rem;
+			}
+
+			#problem {
+			background-color: #CE7935;
+			font-size: 1.8rem;
+			font-weight: bold;
+			letter-spacing: .1rem;
+			}
+
+			#response {
+				background-color: gray;
+				text-align: center;
+				font-size: .8rem;
+				font-weight: lighter;
+				border-style: solid;
+				border-color: #CE7935;
+			}
+				#response:focus {
+					background-color: #9FC67E;
+					font-size: 1.2rem;
+					text-align: right;
+					color: black;
+					font-weight: bold;
+					box-shadow: none;
+					outline: none;
+				}
+
+/* Positioning-type-things */
+
+body {
 	position: absolute;
 	height: 100%;
 	width: 100%;
 	margin: 0;
 
-	color: black;
-	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
-	letter-spacing: .2rem;
-	text-align: center;
-}
-
-#header {
-	position: relative;
-	width: 100%;
-	margin: 1rem 0 0 0;
-	height: 10rem;
-	background-color: #E2A538;
-	border-radius: 6rem 5rem 5rem 0;
 	text-align: right;
 }
+	#header {
+		margin: 1rem 0 0 0;
 
-#welcometext {
-	display: inline;
-	position: relative;
-	width: 10rem;
-	background-color: black;
-	color: #E2A538;
-	font-size: 3.7rem;
-	margin-right: 5rem;
-	top: -.8rem;
-	padding: 0 .5rem;
-}
+		width: 100%;
+		height: 10rem;
+		border-radius: 6rem 5rem 5rem 0;
+	}
+		#welcometext {
+			display: inline; /* Width control. */
+			padding: 0 .5rem;
 
-#displaybox {
-	position: absolute;
-	top: 0;
-	right: 0;
-	overflow: hidden;
-	width: 0;
-}
+			position: relative;
+			top: -.8rem;
+			margin-right: 5rem;
+		}
 
-#scoreboard {
-	position: relative;
-	background-color: #E2A538;
-	width: 15%;
-	left: 0;
-	height: 10%;
-	border-radius: 0 -5rem 0 0;
-	color: black;
-	font-size: 1.2rem;
-	letter-spacing: 0;
-	z-index: 1000;
-}
+	#sidebar {
+		position: relative; /* Mainly so I can use for easier positioning of contained elements. */
+		width: 15%;
+	}
+		#total {
+			position: absolute;
+			top: -4.5rem;
+			height: 10rem;
+			border-width: .6rem 0; /* Total vertical: 7.5rem ?*/
+			width: 100%;
+			z-index: 2;
+		}
+			#totaltext {
+				position: absolute;
+				top: 2rem;
+				right: .5em;
+			}
+			#totaltime {
+				position: absolute;
+				bottom: 0;
+				right: .5rem;
+				bottom: 2rem;
+			}
 
-#total {
-	position: absolute;
-	top: -4.5rem;
-	width: 100%;
-	background-color: #AF461E;
-	background-color: #D7A750;
-	border: solid 0px #090909;
-	border-width: 10px 0;
-	height: 10rem;
-}
+		#status {
+			position: absolute;
+			top: 6.2rem;
+			height: 5rem;
+			width: 100%;
+			border-width: .6rem 0;
+			z-index: 1;
+		}
+			#statustext {
+				position: absolute;
+				width: 5rem;
+				right: 5rem;
+				text-align: left;
+				bottom: 0;
+			}
 
-#totaltext {
-	position: absolute;
-	top: 2rem;
-	right: .5em;
-	text-align: right;
-}
+		#restart {
+			position: absolute;
+			top: 12.4rem;
+			height: 5rem;
+			width: 100%;
+			background-color: #C4825E;
+		}
+			#restarttext {
+				position: absolute;
+				width: 100%;
+				right: .5rem;
+				top: 1rem;
+			}
 
-#totaltime {
-	position: absolute;
-	bottom: 0;
-	right: .5rem;
-	font-size: 1rem;
-	bottom: 2rem;
-}
+		#foot {
+			position: absolute;
+			top: 18rem;
+			width: 100%;
+			height: 10rem;
+			border-radius: 0rem 0rem 10rem 10rem;
+		}
 
-#status {
-	position: absolute;
-	top: 6.7rem;
-	height: 8rem;
-	width: 100%;
-	background-color: #B891B1;
-	background-color: #D7AC9C;
-	border-bottom: solid 10px black;
-}
+	#game {
+		position: absolute;
+		top: 5rem;
+		right: .4rem;
+		width: 80%;
+		height: 1.5rem;
+		border-radius: 5rem 0 7rem 5rem;
+		z-index: 4;
+	}
+		#dialogue, #seconds, #score, #timertext, #scoretext, #problem, #response {
+			position: absolute;
+		}
+		#dialogue {
+			left: 1.5rem;
+			right: 0;
+			margin-right: 57%;
+			width: 27rem;
+			height: 8rem;
+		}
+			#seconds, #score {
+				height: 1.3rem;
+				padding-top: .3rem;
+				padding-right: .2rem;
+			}
 
-#statustext {
-	position: absolute;
-	width: 100%;
-	text-align: right;
-	margin-left: -.5rem;
-	bottom: .5rem;
-}
+			#seconds, #timertext {
+				width: 15rem;
+				border-width: 0 1rem 0 2rem;
+			}
+			#score, #scoretext {
+				right: 0rem;
+				width: 7rem;
+				border-width: 0 1rem 0 1.5rem;
+			}
+			#timertext, #scoretext{
+				top: 2rem;
+				padding-top: 3rem;
+				padding-right: .2rem;
+			}
+			#problem {
+				bottom: -4.5rem;
+				right: 1rem;
+				width: 23.5rem;
+				height: 5.5rem;
+				padding-top: .5rem;
+				padding-right: .5rem;
+			}
+			#response {
+				bottom: -6.8rem;
+				right: 1rem;
+				height: 2rem;
+				width: 10rem;
+				margin: 0;
+				padding: 0 1rem;
+				border-width: 1rem 0 0 0;
+				border-radius: 0rem 0rem 1rem 1rem;
+				}
 
-#statustext:first-letter {
-	font-size: 8rem;
-	margin-right: 15%;
-	opacity: 0;
-}
-
-#statustext:hover:first-letter {
-	opacity: .1;
-}
-
-#unique {
-	position: absolute;
-	top: 5rem;
-	right: .4rem;
-	width: 80%;
-	height: 1.5rem;
-	border-radius: 5rem 0 7rem 5rem;
-	background-color: #CE7935;
-	font-size: 1rem;
-	z-index: 1000;
-}
-
-#seconds {
-	position: absolute;
-	height: 1.3rem;
-	width: 15rem;
-	border-width: 0 1rem 0 2rem;
-	border-style: solid;
-	border-color: #0F0F0F;
-	background-color: #B05D5D;
-	padding-top: .3rem;
-	padding-right: .2rem;
-	text-align: right;
-}
-
-#score {
-	position: absolute;
-	right: 0rem;
-	background-color: #9FC67E;
-	width: 7rem;
-	border-right: solid 1rem black;
-	border-left: solid 1.5rem black;
-	border-color: #0F0F0F;
-	text-align: right;
-	height: 1.3rem;
-	padding-top: .3rem;
-	padding-right: .2rem;
-}
-
-#problem {
-	position: absolute;
-	background-color: #CE7935;
-	bottom: -4.5rem;
-	right: 1rem;
-	width: 23.5rem;
-	height: 5.5rem;
-	padding-top: .5rem;
-	padding-right: .5rem;
-	text-align: right;
-	font-size: 1.8rem;
-	font-weight: bold;
-	letter-spacing: .1rem;
-}
-
-#runninggame {
-	position: absolute;
-	margin: 0;
-	padding: 0 0 0 1px; /* Because 15% + 85% doesn't apparently equal 100%!*/
-	background-color: #0F0F0F;
-	border-radius: 3rem 0 0 3rem;
-	top: 4rem;
-	right: 0;
-	height: 30rem;
-	width: 85%;
-}
-
-#dialogue {
-	position: absolute;
-	left: 1.5rem;
-	right: 0;
-	margin-right: 57%;
-	width: 27rem;
-	height: 8rem;
-	z-index: 100000;
-}
-
-#timertext, #scoretext{
-	position: absolute;
-	top: 2rem;
-	padding-top: 3rem;
-	letter-spacing: .1rem;
-	font-size: .9rem;
-}
-
-#timertext {
-	width: 15rem;
-	border-width: 0 1rem 0 2rem;
-	border-style: solid;
-	border-color: #0F0F0F;
-	background-color: #B05D5D;
-	padding-right: .2rem;
-	text-align: right;
-}
-
-#scoretext {
-	right: 0rem;
-	background-color: #9FC67E;
-	width: 7rem;
-	border-right: solid 1rem black;
-	border-left: solid 1.5rem black;
-	border-color: #0F0F0F;
-	text-align: right;
-	padding-right: .2rem;
-}
-
-#footer {
-	position: absolute;
-	top: 24.5rem;
-	width: 15%;
-	height: 10rem;
-	background-color: #BE8651;
-	border-radius: 0rem 0rem 10rem 10rem;
-	text-align: right;
-	z-index: -100;
-}
-
-#response {
-	position: absolute;
-	bottom: -6.8rem;
-	right: 1rem;
-	height: 2rem;
-	width: 10rem;
-	border: none;
-	margin: 0;
-	background-color: gray;
-	border-top: solid 1rem #CE7935;
-	border-radius: 0rem 0rem 1rem 1rem;
-	padding: 0 1rem;
-	text-align: center;
-	font-size: .8rem;
-	font-weight: lighter;
-	color: black;
-}
-
-#response:focus {
-	background-color: #9FC67E;
-	font-size: 1.2rem;
-	text-align: right;
-	color: black;
-	font-weight: bold;
-	box-shadow: none;
-	outline: none;
-}
-
+	#runninggame {
+		position: absolute;
+		margin: 0;
+		padding: 0 0 0 1px; /* Because 15% + 85% doesn't apparently equal 100%!*/
+		background-color: #0F0F0F;
+		border-radius: 3rem 0 0 3rem;
+		top: 4rem;
+		right: 0;
+		height: 30rem;
+		width: 85%;
+	}
