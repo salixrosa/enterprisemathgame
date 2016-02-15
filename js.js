@@ -243,8 +243,9 @@ var game = function() {
 
 	setup();
 	cleanid("status").onclick = pause;
-	cleanid("problem").onclick = pause;
+	cleanid("question").onclick = pause;
 	cleanid("restart").onclick = restart;
+	cleanid("submit").onclick = check;
 	document.body.onkeydown = eventdirect;
 
 }
