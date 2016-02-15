@@ -129,7 +129,7 @@ var game = function() {
 
 		var key = event.keyCode;
 
-		if(key === 13) {
+		if(key === 13 || key === 9) {
 			check();
 		}
 		else if(key === 32) {
@@ -245,7 +245,6 @@ var game = function() {
 	cleanid("status").onclick = pause;
 	cleanid("question").onclick = pause;
 	cleanid("restart").onclick = restart;
-	cleanid("submit").onclick = check;
 	document.body.onkeydown = eventdirect;
 
 }
