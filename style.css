@@ -15,7 +15,7 @@ html {
 body {
 	height: 100%;
 	width: 100%;
-  min-width: 750px;
+  min-width: 655px;
   max-width: 900px;
 	margin: 0 auto;
 	background-color: #0F0F0F;
@@ -40,9 +40,10 @@ body {
 		#welcometext {
 			background-color: #0F0F0F;
 			color: #E2A538;
-			font-size: 3.7rem;
+			font-size: 2.5rem;
+      word-spacing: 20px;
 			display: inline; /* Width control. */
-			padding: 0 2rem;
+			padding: 0 1.8rem;
 			margin-right: 5rem;
 		}
 
@@ -78,7 +79,7 @@ body {
             border-color: #0F0F0F;
           }
           #score, #scoretext {
-            width: 7rem;
+            width: 6.5rem;
             background-color: #9FC67E;
             border-color: #0F0F0F;
           }
@@ -114,21 +115,20 @@ body {
 		background-color: #AD6039;
 	}
 
-
-
-
+/* Question & Response*/
 #problem {
   position: relative;
   font-weight: bold;
   letter-spacing: .1rem;
   padding-left: 2rem;
   width: 70%;
+  vertical-align: 2rem;
 }
   #question {
     font-size: 2rem;
-    padding: .5rem 1.5rem;
+    padding: 1rem 1.75rem;
     background-color: #CE7935;
-    border-radius: 1.5rem 1.5rem 0 1.5rem;
+    border-radius: 2rem 1.5rem 0 2rem;
   }
 #response {
   position: absolute;
