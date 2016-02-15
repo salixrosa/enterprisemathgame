@@ -37,57 +37,11 @@ var game = function() {
 					}
 				}
 			)
-		},
-
-			/* While the above objects and functions are involved in the actual construction of the math problem within JS,
-			the code here has little to do with the actual settings and only provides for a hideable settings panel. This
-			may or may not belong here.
-			Note: with latest design, the show and hide functions are only useful in small viewports? */
-		show: function() {
-			var displaybox = cleanid("displaybox");
-			var hidebutton = cleanid("hide");
-			var showbutton = cleanid("show");
-
-			pause();
-
-			displaybox.className = "extendeddisplay";
-			hidebutton.className = "display";
-			showbutton.className = "hide";
-			settings.initialize();
-
-		},
-		hide: function() {
-			var displaybox = cleanid("displaybox");
-			var hidebutton = cleanid("hide");
-			var showbutton = cleanid("show");
-
-			displaybox.className = "minimizeddisplay";
-			hidebutton.className = "hide";
-			showbutton.className = "display";
-			settings.change();
-
-			pause();
-		},
-		initialize: function() {
-			/* This baby takes the settings in the above objects and changes the status of on-page settings elements to reflect the in-game settings.
-			Currently incomplete. In fact, there are whole settings I intend that have yet to whatsoever provided for in the code.*/
-			cleanclass('addition button',0).checked = settings.operatorsettings["+"];
-			cleanclass('subtraction button',0).checked = settings.operatorsettings["-"];
-			cleanclass('multiplication button',0).checked = settings.operatorsettings["x"];
-			cleanclass('division button',0).checked = settings.operatorsettings["/"];
-		},
-		change: function() {
-			/* This does the exact inverse of above; in-game settings are changed to reflect the user-chosen settings */
-			settings.operatorsettings["+"] = cleanclass('addition button',0).checked;
-			settings.operatorsettings["-"] = cleanclass('subtraction button',0).checked;
-			settings.operatorsettings["x"] = cleanclass('multiplication button',0).checked;
-			settings.operatorsettings["/"] = cleanclass('division button',0).checked;
 		}
 	};
 
 	function setup() {
 		generate();
-		settings.initialize();
 		pause();
 	}
 
@@ -172,6 +126,7 @@ var game = function() {
 	}
 
 	function eventdirect(event){
+
 		var key = event.keyCode;
 
 		if(key === 13) {
@@ -287,8 +242,6 @@ var game = function() {
 	}
 
 	setup();
-	cleanid("show").onclick = settings.show;
-	cleanid("hide").onclick = settings.hide;
 	cleanid("status").onclick = pause;
 	cleanid("restart").onclick = restart;
 	document.body.onkeydown = eventdirect;
