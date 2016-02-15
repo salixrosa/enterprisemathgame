@@ -1,252 +1,161 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  padding: 0;
+	margin: 0;
+	border-style: none;
+	text-decoration: none;
+	list-style: none;
+	color: inherit;
+	font-family: inherit;
+  box-sizing: border-box;
+}
 
-/* Style (colors, fonts, font sizes, styles) */
-
-body { 
+html {
+	font-size: 16px;
+}
+body {
+	height: 100%;
+	width: 100%;
+  min-width: 750px;
+  max-width: 900px;
+	margin: 0 auto;
 	background-color: #0F0F0F;
-	border-color: #0F0F0F;
-
 	color: black;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
 	letter-spacing: .2rem;
 }
-		/*Header*/
+
+#header, #sidebar, #problem {
+  text-align: right;
+}
+#sidebar, #problem {
+  display: inline-block;
+}
+
+/*Header*/
 	#header {
 		background-color: #E2A538;
-	}
-		#welcometext {
-			background-color: black;
-			color: #E2A538;
-			font-size: 3.7rem;
-		}
-		/*Sidebar*/
-	#sidebar {
-		font-size: 1.2rem;
-		letter-spacing: 0;
-	}
-		#total {
-			background-color: #D7A750;
-			border-style: solid;	
-			border-color: #0F0F0F;		
-		}
-			#totaltime {
-				font-size: 1rem;
-			}
-
-		#status {
-			background-color: #D7AC9C;
-			border-style: solid;
-			border-color: #0F0F0F;
-		}
-			#statustext:first-letter {
-				font-size: 12rem;
-				opacity: 0;
-			}
-				#status:hover #statustext:first-letter {
-					opacity: .1;
-				}
-
-		#foot {
-			background-color: #AD6039;
-		}
-
-	#game {
-		background-color: #CE7935;
-	}
-			/*HUD*/
-			#seconds, #timertext {
-			border-style: solid;
-			background-color: #B05D5D;
-			border-color: #0F0F0F;
-			}
-			#score, #scoretext {
-			background-color: #9FC67E;
-			border: solid;
-			border-color: #0F0F0F;
-			}
-			#timertext, #scoretext {
-			letter-spacing: .1rem;
-			font-size: .9rem;
-			}
-
-			#problem {
-			background-color: #CE7935;
-			font-size: 1.8rem;
-			font-weight: bold;
-			letter-spacing: .1rem;
-			}
-
-			#response {
-				background-color: gray;
-				text-align: center;
-				font-size: .8rem;
-				font-weight: lighter;
-				border-style: solid;
-				border-color: #CE7935;
-			}
-				#response:focus {
-					background-color: #9FC67E;
-					font-size: 1.2rem;
-					text-align: right;
-					color: black;
-					font-weight: bold;
-					box-shadow: none;
-					outline: none;
-				}
-
-/* Positioning-type-things */
-
-body {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	margin: 0;
-
-	text-align: right;
-}
-	#header {
-		margin: 1rem 0 0 0;
-
-		width: 100%;
 		height: 10rem;
 		border-radius: 6rem 5rem 5rem 0;
 	}
 		#welcometext {
+			background-color: #0F0F0F;
+			color: #E2A538;
+			font-size: 3.7rem;
 			display: inline; /* Width control. */
-			padding: 0 .5rem;
-
-			position: relative;
-			top: -.8rem;
+			padding: 0 2rem;
 			margin-right: 5rem;
 		}
 
-	#sidebar {
-		position: relative; /* Mainly so I can use for easier positioning of contained elements. */
-		width: 15%;
+    /*HUD*/
+    	#dialogue {
+    		background-color: #0F0F0F;
+        border-radius: 5rem 0 0 0;
+        padding: 2rem;
+        margin-left: 15%;
+        margin-right: 5rem;
+        font-size: 0;
+    	}
+        #values {
+          background-color: #CE7935;
+          border-radius: 1rem;
+        }
+        #values, #labels {
+          padding-right: 1rem;
+          font-size: 1rem;
+          margin: 1rem 0;
+        }
+          #seconds, #score, #timertext, #scoretext {
+            display:inline-block;
+            border: solid .5rem black;
+            border-width: 0 .5rem;
+          }
+          #seconds, #score {
+            padding: .35rem .25rem;
+          }
+          #seconds, #timertext {
+            width: 15rem;
+            background-color: #B05D5D;
+            border-color: #0F0F0F;
+          }
+          #score, #scoretext {
+            width: 7rem;
+            background-color: #9FC67E;
+            border-color: #0F0F0F;
+          }
+          #timertext, #scoretext{
+            padding: 5rem .25rem .25rem;
+            letter-spacing: .1rem;
+            font-size: .9rem;
+          }
+
+
+/*Sidebar*/
+#sidebar {
+  width: 15%;
+	font-size: 1.2rem;
+	letter-spacing: 0;
+}
+  #sidebar > div {
+    margin: .5rem 0;
+		padding: 1rem .5rem;
 	}
-		#total {
-			position: absolute;
-			top: -4.5rem;
-			height: 10rem;
-			border-width: .6rem 0; /* Total vertical: 7.5rem ?*/
-			width: 100%;
-			z-index: 2;
-		}
-			#totaltext {
-				position: absolute;
-				top: 2rem;
-				right: .5em;
-			}
-			#totaltime {
-				position: absolute;
-				bottom: 0;
-				right: .5rem;
-				bottom: 2rem;
-			}
-
-		#status {
-			position: absolute;
-			top: 6.2rem;
-			height: 5rem;
-			width: 100%;
-			border-width: .6rem 0;
-			z-index: 1;
-		}
-			#statustext {
-				position: absolute;
-				width: 5rem;
-				right: 5rem;
-				text-align: left;
-				bottom: 0;
-			}
-
-		#restart {
-			position: absolute;
-			top: 12.4rem;
-			height: 5rem;
-			width: 100%;
-			background-color: #C4825E;
-		}
-			#restarttext {
-				position: absolute;
-				width: 100%;
-				right: .5rem;
-				top: 1rem;
-			}
-
-		#foot {
-			position: absolute;
-			top: 18rem;
-			width: 100%;
-			height: 10rem;
-			border-radius: 0rem 0rem 10rem 10rem;
-		}
-
-	#game {
-		position: absolute;
-		top: 5rem;
-		right: .4rem;
-		width: 80%;
-		height: 1.5rem;
-		border-radius: 5rem 0 7rem 5rem;
-		z-index: 4;
+	#time {
+		background-color: #D7A750;
 	}
-		#dialogue, #seconds, #score, #timertext, #scoretext, #problem, #response {
-			position: absolute;
-		}
-		#dialogue {
-			left: 1.5rem;
-			right: 0;
-			margin-right: 57%;
-			width: 27rem;
-			height: 8rem;
-		}
-			#seconds, #score {
-				height: 1.3rem;
-				padding-top: .3rem;
-				padding-right: .2rem;
-			}
-
-			#seconds, #timertext {
-				width: 15rem;
-				border-width: 0 1rem 0 2rem;
-			}
-			#score, #scoretext {
-				right: 0rem;
-				width: 7rem;
-				border-width: 0 1rem 0 1.5rem;
-			}
-			#timertext, #scoretext{
-				top: 2rem;
-				padding-top: 3rem;
-				padding-right: .2rem;
-			}
-			#problem {
-				bottom: -4.5rem;
-				right: 1rem;
-				width: 23.5rem;
-				height: 5.5rem;
-				padding-top: .5rem;
-				padding-right: .5rem;
-			}
-			#response {
-				bottom: -6.8rem;
-				right: 1rem;
-				height: 2rem;
-				width: 10rem;
-				margin: 0;
-				padding: 0 1rem;
-				border-width: 1rem 0 0 0;
-				border-radius: 0rem 0rem 1rem 1rem;
-				}
-
-	#runninggame {
-		position: absolute;
-		margin: 0;
-		padding: 0 0 0 1px; /* Because 15% + 85% doesn't apparently equal 100%!*/
-		background-color: #0F0F0F;
-		border-radius: 3rem 0 0 3rem;
-		top: 4rem;
-		right: 0;
-		height: 30rem;
-		width: 85%;
+	#status {
+		background-color: #D7AC9C;
 	}
+	#restart {
+		background-color: #C4825E;
+	}
+	#foot {
+		height: 10rem;
+		border-radius: 0rem 0rem 10rem 10rem;
+		background-color: #AD6039;
+	}
+
+
+
+
+#problem {
+  position: relative;
+  font-weight: bold;
+  letter-spacing: .1rem;
+  padding-left: 2rem;
+  width: 70%;
+}
+  #question {
+    font-size: 2rem;
+    padding: .5rem 1.5rem;
+    background-color: #CE7935;
+    border-radius: 1.5rem 1.5rem 0 1.5rem;
+  }
+#response {
+  position: absolute;
+  right: 0;
+  color: black;
+  height: 2rem;
+  width: 10rem;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: lighter;
+  border: none;
+  border-radius: 0 0 .5rem .5rem;
+}
+  #response:focus {
+    font-size: 1.2rem;
+    text-align: right;
+    font-weight: bold;
+    box-shadow: none;
+    outline: none;
+  }
+  .hidden {
+    display: none;
+  }
+  .grade {
+    background-color: gray;
+  }
+  .fail {
+    background-color: #430000;
+  }

@@ -9,10 +9,10 @@ var game = function() {
 		return(document.getElementsByClassName(name)[index]);
 	};
 
-	settings = { 
+	settings = {
 		/* Contained here are settings that are intended to be edited for optimized gameplay
 		(namely number ranges and operator types) as well as functions that aid the use of the settings
-		and that aid the user in changing settings. */ 
+		and that aid the user in changing settings. */
 
 		ranges: {
 			addition: 100,
@@ -120,7 +120,7 @@ var game = function() {
 				var zi = zo - x;
 				var y = randomoutof(zi);
 				break;
-		
+
 			case "-":
 				/* This logic creates a random number between 0 and the input number, then calculates a random number between zero and the first random number.
 				This means the subtraction problem will never equal less than zero. */
@@ -144,7 +144,7 @@ var game = function() {
 				It then calculates all factors of that random number and randomly picks one of those factors. */
 				var zo = settings.ranges.division - 1;
 				var divisors = [];
-				
+
 				while(divisors.length < 1) {
 					var divisor = [];
 					var x = randomoutof(zo) + 1;
@@ -164,7 +164,7 @@ var game = function() {
 
 		answer = eval(problem);
 
-		cleanid("problem").innerHTML = problem;
+		cleanid("question").innerHTML = problem;
 	};
 
 	function clear() {
@@ -177,7 +177,7 @@ var game = function() {
 		if(key === 13) {
 			check();
 		}
-		else if(key === 40) {
+		else if(key === 32) {
 			pause();
 		}
 	}
@@ -244,15 +244,14 @@ var game = function() {
 	}
 
 	function flash() {
-		var background = cleanid('runninggame');
+		var background = cleanclass('grade', 0);
 		var internaltime = 0;
-		var originalbgcolor = background.style.backgroundColor;
-		background.style.backgroundColor = "#430000";
+		background.classList.add('fail');
 		function internalcount(){
 			internaltime++;
 			if (internaltime > 1) {
 				clearInterval(begininternalcount);
-				background.style.backgroundColor = originalbgcolor;
+				background.classList.remove('fail');
 			}
 		}
 		var begininternalcount = setInterval(internalcount,100);
@@ -264,17 +263,17 @@ var game = function() {
 		if(paused%2==0) {
 			timer("on");
 			generate();
-			cleanid('response').style.display = "inline-block";
-			cleanid('statustext').innerHTML="&#8595;PAUSE";
+			cleanid('response').classList.remove('hidden');
+			cleanid('statustext').innerHTML="PAUSE";
 			cleanid('response').focus();
 
 		}
 		else {
 			timer("off");
 			cleanid('seconds').innerHTML = "---";
-			cleanid('problem').innerHTML="PAUSED";
-			cleanid('statustext').innerHTML="&#8595;PLAY";
-			cleanid('response').style.display = "none";
+			cleanid('question').innerHTML="PAUSED";
+			cleanid('statustext').innerHTML="PLAY";
+			cleanid('response').classList.add('hidden');
 		}
 		paused++;
 	}
