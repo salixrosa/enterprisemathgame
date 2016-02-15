@@ -13,149 +13,135 @@ html {
 	font-size: 16px;
 }
 body {
-	height: 100%;
-	width: 100%;
-  min-width: 655px;
+  min-width: 320px;
   max-width: 900px;
 	margin: 0 auto;
+  padding: .5rem;
+  font-size: 0;
+  text-align: center;
 	background-color: #0F0F0F;
 	color: black;
 	font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans-serif;
 	letter-spacing: .2rem;
 }
 
-#header, #sidebar, #problem {
-  text-align: right;
-}
-#sidebar, #problem {
-  display: inline-block;
+body > * {
+  margin-bottom: .75rem;
 }
 
 /*Header*/
 	#header {
 		background-color: #E2A538;
-		height: 10rem;
-		border-radius: 6rem 5rem 5rem 0;
+		border-radius: 3rem 3rem .25rem .25rem;
+    padding: .5rem 0;
 	}
 		#welcometext {
+      display: inline-block;
+      border-radius: 3rem;
 			background-color: #0F0F0F;
 			color: #E2A538;
-			font-size: 2.5rem;
-      word-spacing: 20px;
-			display: inline; /* Width control. */
-			padding: 0 1.8rem;
-			margin-right: 5rem;
+			font-size: 1.5rem;
+      word-spacing: 1.5rem;
+			padding: .75rem 1.75rem;
 		}
 
-    /*HUD*/
-    	#dialogue {
-    		background-color: #0F0F0F;
-        border-radius: 5rem 0 0 0;
-        padding: 2rem;
-        margin-left: 15%;
-        margin-right: 5rem;
-        font-size: 0;
-    	}
-        #values {
-          background-color: #CE7935;
-          border-radius: 1rem;
-        }
-        #values, #labels {
-          padding-right: 1rem;
-          font-size: 1rem;
-          margin: 1rem 0;
-        }
-          #seconds, #score, #timertext, #scoretext {
-            display:inline-block;
-            border: solid .5rem black;
-            border-width: 0 .5rem;
-          }
-          #seconds, #score {
-            padding: .35rem .25rem;
-          }
-          #seconds, #timertext {
-            width: 15rem;
-            background-color: #B05D5D;
-            border-color: #0F0F0F;
-          }
-          #score, #scoretext {
-            width: 6.5rem;
-            background-color: #9FC67E;
-            border-color: #0F0F0F;
-          }
-          #timertext, #scoretext{
-            padding: 5rem .25rem .25rem;
-            letter-spacing: .1rem;
-            font-size: .9rem;
-          }
-
-
-/*Sidebar*/
-#sidebar {
-  width: 15%;
-	font-size: 1.2rem;
-	letter-spacing: 0;
-}
-  #sidebar > div {
-    margin: .5rem 0;
-		padding: 1rem .5rem;
-	}
-	#time {
-		background-color: #D7A750;
-	}
-	#status {
-		background-color: #D7AC9C;
-	}
-	#restart {
-		background-color: #C4825E;
-	}
-	#foot {
-		height: 10rem;
-		border-radius: 0rem 0rem 10rem 10rem;
-		background-color: #AD6039;
-	}
+/*HUD*/
+  #dialogue {
+    background-color: #CE7935;
+    border-radius: 5rem;
+  }
+    #seconds, #score, #timertext, #scoretext {
+      font-size: 1rem;
+      display:inline-block;
+      padding: .35rem;
+      border: solid .5rem #0F0F0F;
+      border-width: 0 .5rem;
+    }
+    #values p {
+      border-bottom-width: .5rem;
+    }
+    #seconds, #timertext {
+      width: 45%;
+      max-width: 15rem;
+      background-color: #B05D5D;
+    }
+    #score, #scoretext {
+      width: 50%;
+      max-width: 6.5rem;
+      background-color: #9FC67E;
+    }
+    #timertext, #scoretext{
+      padding-top: 3rem;
+    }
 
 /* Question & Response*/
 #problem {
-  position: relative;
+  height: 9rem;
   font-weight: bold;
   letter-spacing: .1rem;
-  padding-left: 2rem;
-  width: 70%;
-  vertical-align: 2rem;
 }
   #question {
     font-size: 2rem;
-    padding: 1rem 1.75rem;
-    background-color: #CE7935;
-    border-radius: 2rem 1.5rem 0 2rem;
+    padding: 1.5rem;
+    background-color: #C15E12;
+    border-radius: 5rem;
   }
-#response {
-  position: absolute;
-  right: 0;
-  color: black;
-  height: 2rem;
-  width: 10rem;
-  padding: 0 1rem;
-  text-align: center;
-  font-size: .8rem;
-  font-weight: lighter;
-  border: none;
-  border-radius: 0 0 .5rem .5rem;
-}
-  #response:focus {
-    font-size: 1.2rem;
-    text-align: right;
-    font-weight: bold;
+  #response {
+    margin: 0 auto;
+    width: 70%;
+    padding: .75rem;
+    text-align: center;
+    font-size: 1.4rem;
+    border: none;
     box-shadow: none;
     outline: none;
+    border-radius: 0 0 .5rem .5rem;
   }
-  .hidden {
-    display: none;
+    .hidden {
+      display: none;
+    }
+    .grade {
+      background-color: gray;
+    }
+    .fail {
+      background-color: #430000;
+    }
+
+/*Sidebar*/
+#sidebar {
+  background-color: #C7532E;
+  border-radius: .25rem .25rem 8rem 8rem;
+  padding: 1rem 0 5rem;
+}
+  #sidebar > div {
+    border-bottom: solid .5rem #0F0F0F;
+    letter-spacing: 0;
+		padding: 1rem .5rem;
+	}
+  #sidebar > div:first-child {
+    border-top: solid .5rem #0F0F0F;
   }
-  .grade {
-    background-color: gray;
+	#time {
+		background-color: #D7A750;
+	}
+    #time p {
+      font-size: 1.2rem;
+      display: inline-block;
+      width: 50%;
+    }
+  #status, #restart {
+    font-size: 1.2rem;
+    display: inline-block;
+    width: 50%;
+    box-sizing: border:box;
   }
-  .fail {
-    background-color: #430000;
-  }
+	#status {
+    border-right: solid .5rem #0F0F0F;
+		background-color: #D7AC9C;
+    border-radius: 0 0 0 1rem;
+	}
+	#restart {
+    border-left: .5rem #0F0F0F;
+		background-color: #C4825E;
+    border-radius: 0 0 1rem 0;
+	}
