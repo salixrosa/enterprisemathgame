@@ -1,3 +1,8 @@
+/*!
+ * Copyright 2016 Willow Sells
+ * This code is licensed under the GNU GPLv3
+ */
+
 var game = function() {
 
 	/* These two quick functions have been put in just to pretty things up (and make the coding easier, too).
@@ -219,7 +224,7 @@ var game = function() {
 			timer("on");
 			generate();
 			cleanid('response').classList.remove('hidden');
-			cleanid('statustext').innerHTML="PAUSE";
+			cleanid('status').innerHTML="PAUSE";
 			cleanid('response').focus();
 
 		}
@@ -227,7 +232,7 @@ var game = function() {
 			timer("off");
 			cleanid('seconds').innerHTML = "---";
 			cleanid('question').innerHTML="PAUSED";
-			cleanid('statustext').innerHTML="PLAY";
+			cleanid('status').innerHTML="PLAY";
 			cleanid('response').classList.add('hidden');
 		}
 		paused++;
